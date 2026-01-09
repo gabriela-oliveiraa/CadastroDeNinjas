@@ -4,8 +4,6 @@ import dev.java10x.CadastroDeNinjas.Missoes.Model.MissoesModel;
 import jakarta.persistence.*;
 import lombok.*;
 
-import java.util.List;
-
 @Entity
 @Table(name = "tb_cadastro")
 @NoArgsConstructor
@@ -19,6 +17,7 @@ public class NinjaModel {
 
     private String nome;
 
+    @Column(unique = true)
     private String email;
 
     private int idade;
