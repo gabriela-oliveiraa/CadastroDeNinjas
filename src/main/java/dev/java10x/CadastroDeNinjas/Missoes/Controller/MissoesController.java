@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("missoes")
+@RequestMapping("/missoes")
 public class MissoesController {
 
     private MissoesService missoesService;
@@ -17,8 +17,8 @@ public class MissoesController {
     }
 
     @PostMapping("/criar")
-    public String criarMissao(){
-        return "Missão criada com sucesso";
+    public MissoesModel criarMissao(MissoesModel missao) {
+        return missoesService.criarMissao(missao);
     }
 
     @GetMapping("/listar")
