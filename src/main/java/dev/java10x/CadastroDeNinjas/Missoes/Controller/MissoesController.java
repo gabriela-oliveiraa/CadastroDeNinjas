@@ -26,6 +26,11 @@ public class MissoesController {
         return missoesService.listarMissoes();
     }
 
+    @GetMapping("/listar/{id}")
+    public MissoesModel listarMissoesPorId(@PathVariable Long id){
+        return missoesService.listarMissoesPorId(id);
+    }
+
     @PutMapping("/alterar")
     public String alterarMissao(){
         return "Missão alterada com sucesso";
