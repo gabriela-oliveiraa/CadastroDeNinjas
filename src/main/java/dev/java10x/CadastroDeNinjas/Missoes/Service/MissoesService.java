@@ -32,4 +32,12 @@ public class MissoesService {
     public MissoesModel criarMissao(MissoesModel missao){
         return missoesRepository.save(missao);
     }
+
+    //Alterar Missões
+    public MissoesModel alterarMissao(Long id, MissoesModel missaoAtualizado){
+        if (missoesRepository.existsById(id)){
+            return missoesRepository.save(missaoAtualizado);
+        }
+        return null;
+    }
 }

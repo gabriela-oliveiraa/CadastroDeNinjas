@@ -2,6 +2,7 @@ package dev.java10x.CadastroDeNinjas.Missoes.Controller;
 
 import dev.java10x.CadastroDeNinjas.Missoes.Model.MissoesModel;
 import dev.java10x.CadastroDeNinjas.Missoes.Service.MissoesService;
+import dev.java10x.CadastroDeNinjas.Ninjas.Model.NinjaModel;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -31,9 +32,9 @@ public class MissoesController {
         return missoesService.listarMissoesPorId(id);
     }
 
-    @PutMapping("/alterar")
-    public String alterarMissao(){
-        return "Missão alterada com sucesso";
+    @PutMapping("/alterar/{id}")
+    public MissoesModel alterarMissao(@PathVariable Long id, @RequestBody MissoesModel missaoAtualizado){
+        return missoesService.alterarMissao(id, missaoAtualizado);
     }
 
     @DeleteMapping("/deletar")
