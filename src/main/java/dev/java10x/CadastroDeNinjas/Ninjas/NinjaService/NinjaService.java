@@ -1,5 +1,7 @@
 package dev.java10x.CadastroDeNinjas.Ninjas.NinjaService;
 
+import dev.java10x.CadastroDeNinjas.Ninjas.DTO.NinjaDTO;
+import dev.java10x.CadastroDeNinjas.Ninjas.Mapper.NinjaMapper;
 import dev.java10x.CadastroDeNinjas.Ninjas.Model.NinjaModel;
 import dev.java10x.CadastroDeNinjas.Ninjas.Repository.NinjaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,9 +14,11 @@ import java.util.Optional;
 public class NinjaService {
 
     private NinjaRepository ninjaRepository;
+    private NinjaMapper ninjaMapper;
 
-    public NinjaService(NinjaRepository ninjaRepository) {
+    public NinjaService(NinjaRepository ninjaRepository, NinjaMapper ninjaMapper) {
         this.ninjaRepository = ninjaRepository;
+        this.ninjaMapper = ninjaMapper;
     }
 
     //Listar todos os Ninjas
@@ -29,8 +33,10 @@ public class NinjaService {
     }
 
     //Criar novo ninja
-    public NinjaModel criarNinja(NinjaModel ninja){
-        return ninjaRepository.save(ninja);
+    public NinjaDTO criarNinja(NinjaDTO ninjaDTO){
+        NinjaModel ninja = ninjaMapper.map(ninjaDTO);
+        ninja = ninjaRepository.save(ninja);
+        return ninjaMapper.map(ninja);
     }
 
     //Deletar Ninja

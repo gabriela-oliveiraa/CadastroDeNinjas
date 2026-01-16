@@ -1,5 +1,6 @@
 package dev.java10x.CadastroDeNinjas.Missoes.Controller;
 
+import dev.java10x.CadastroDeNinjas.Missoes.DTO.MissoesDTO;
 import dev.java10x.CadastroDeNinjas.Missoes.Model.MissoesModel;
 import dev.java10x.CadastroDeNinjas.Missoes.Service.MissoesService;
 import dev.java10x.CadastroDeNinjas.Ninjas.Model.NinjaModel;
@@ -18,7 +19,7 @@ public class MissoesController {
     }
 
     @PostMapping("/criar")
-    public MissoesModel criarMissao(MissoesModel missao) {
+    public MissoesDTO criarMissao(MissoesDTO missao) {
         return missoesService.criarMissao(missao);
     }
 
