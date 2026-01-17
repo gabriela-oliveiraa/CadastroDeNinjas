@@ -1,5 +1,6 @@
 package dev.java10x.CadastroDeNinjas.Missoes.Controller;
 
+import dev.java10x.CadastroDeNinjas.Missoes.DTO.MissoesDTO;
 import dev.java10x.CadastroDeNinjas.Missoes.Model.MissoesModel;
 import dev.java10x.CadastroDeNinjas.Missoes.Service.MissoesService;
 import dev.java10x.CadastroDeNinjas.Ninjas.Model.NinjaModel;
@@ -18,27 +19,27 @@ public class MissoesController {
     }
 
     @PostMapping("/criar")
-    public MissoesModel criarMissao(MissoesModel missao) {
+    public MissoesDTO criarMissao(MissoesDTO missao) {
         return missoesService.criarMissao(missao);
     }
 
     @GetMapping("/listar")
-    public List<MissoesModel> listarMissoes(){
+    public List<MissoesDTO> listarMissoes(){
         return missoesService.listarMissoes();
     }
 
     @GetMapping("/listar/{id}")
-    public MissoesModel listarMissoesPorId(@PathVariable Long id){
+    public MissoesDTO listarMissoesPorId(@PathVariable Long id){
         return missoesService.listarMissoesPorId(id);
     }
 
     @PutMapping("/alterar/{id}")
-    public MissoesModel alterarMissao(@PathVariable Long id, @RequestBody MissoesModel missaoAtualizado){
-        return missoesService.alterarMissao(id, missaoAtualizado);
+    public MissoesDTO alterarMissao(@PathVariable Long id, @RequestBody MissoesDTO MissoesDTO){
+        return missoesService.alterarMissao(id, MissoesDTO);
     }
 
     @DeleteMapping("/deletar")
-    public String deletarMissao(){
-        return "Missão deletada com sucesso";
+    public void deletarMissao(Long id){
+        missoesService.deletarMissao(id);
     }
 }
